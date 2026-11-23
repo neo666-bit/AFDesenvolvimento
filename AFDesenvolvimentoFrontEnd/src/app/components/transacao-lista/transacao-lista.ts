@@ -14,7 +14,15 @@ export class TransacaoLista implements OnInit {
   transacoes: Transacao[] = [];
   filtro = '';
 
-  categorias = ['Alimentação', 'Salário', 'Lazer', 'Transporte', 'Outros'];
+  categorias: string[] = [
+    'Salário',
+    'Alimentação',
+    'Transporte',
+    'Moradia',
+    'Lazer',
+    'Saúde',
+    'Outros'
+  ];
 
   ngOnInit() {
     this.carregar();
