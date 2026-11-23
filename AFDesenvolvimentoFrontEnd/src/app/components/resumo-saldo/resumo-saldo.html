@@ -1,1 +1,16 @@
-<p>resumo-saldo works!</p>
+<div class="resumo-container">
+  <div class="card receita">
+    <span>Entradas (Receitas)</span>
+    <strong>R$ {{ totalReceitas | number:'1.2-2' }}</strong>
+  </div>
+
+  <div class="card despesa">
+    <span>Saídas (Despesas)</span>
+    <strong>R$ {{ totalDespesas | number:'1.2-2' }}</strong>
+  </div>
+
+  <div class="card saldo" [ngClass]="{'positivo': saldo >= 0, 'negativo': saldo < 0}">
+    <span>Saldo Atual</span>
+    <strong>R$ {{ saldo | number:'1.2-2' }}</strong>
+  </div>
+</div>
