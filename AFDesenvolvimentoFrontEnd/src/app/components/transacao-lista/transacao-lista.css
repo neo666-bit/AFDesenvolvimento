@@ -1,0 +1,101 @@
+.lista-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 24px;
+}
+
+.lista-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.lista-topo h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.filtro-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filtro-box select {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabela th,
+.tabela td {
+  text-align: left;
+  padding: 12px 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.tabela th {
+  color: #666;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.badge-categoria {
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.tipo-receita,
+.valor-receita {
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.tipo-despesa,
+.valor-despesa {
+  color: #c62828;
+  font-weight: 600;
+}
+
+.acoes-col {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-editar {
+  background: #ffb300;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-excluir {
+  background: #d32f2f;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.vazio {
+  text-align: center;
+  color: #888;
+  padding: 20px 0;
+}

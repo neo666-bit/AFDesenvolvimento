@@ -1,1 +1,60 @@
-<p>transacao-lista works!</p>
+<div class="lista-card">
+  <div class="lista-topo">
+    <h2>Movimentações</h2>
+
+    <div class="filtro-box">
+      <label>Filtrar por categoria:</label>
+      <select [(ngModel)]="filtro">
+        <option value="">Todas as categorias</option>
+        @for (cat of categorias; track cat) {
+          <option [value]="cat">{{ cat }}</option>
+        }
+      </select>
+    </div>
+  </div>
+
+  @if (listaFiltrada.length === 0) {
+    <p class="vazio">Nenhuma movimentação encontrada.</p>
+  } @else {
+    <table class="tabela">
+      <thead>
+        <tr>
+          <th>Descrição</th>
+          <th>Categoria</th>
+          <th>Data</th>
+          <th>Tipo</th>
+          <th>Valor</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (t of listaFiltrada; track t._id) {
+          <tr>
+            <td>{{ t.descricao }}</td>
+            <td>
+              <span
+                class="badge-categoria"
+                [ngStyle]="{ 'background-color': corCategoria(t.categoria) }"
+              >
+                {{ t.categoria }}
+              </span>
+            </td>
+            <td>{{ t.data }}</td>
+            <td>
+              <span [ngClass]="t.tipo === 'receita' ? 'tipo-receita' : 'tipo-despesa'">
+                {{ t.tipo === 'receita' ? 'Entrada' : 'Saída' }}
+              </span>
+            </td>
+            <td [ngClass]="t.tipo === 'receita' ? 'valor-receita' : 'valor-despesa'">
+              {{ t.tipo === 'receita' ? '+' : '-' }} R$ {{ t.valor | number:'1.2-2' }}
+            </td>
+            <td class="acoes-col">
+              <button class="btn-editar" (click)="editar.emit(t)">Editar</button>
+              <button class="btn-excluir" (click)="excluir(t._id)">Excluir</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</div>

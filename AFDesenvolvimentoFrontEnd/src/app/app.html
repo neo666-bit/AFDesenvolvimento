@@ -1,7 +1,16 @@
 <div style="max-width: 900px; margin: 30px auto; padding: 0 16px; font-family: Arial, sans-serif;">
   <h1 style="text-align: center; color: #333;">Gestor Financeiro Pessoal</h1>
 
-
   <app-resumo-saldo [transacoes]="transacoes"></app-resumo-saldo>
-  <app-transacao-form (salvo)="carregarTransacoes()"></app-transacao-form>
+
+  <app-transacao-form
+    [transacaoEmEdicao]="transacaoSelecionada"
+    (salvo)="carregarTransacoes()"
+  ></app-transacao-form>
+
+  <app-transacao-lista
+    [transacoes]="transacoes"
+    (excluiu)="carregarTransacoes()"
+    (editar)="selecionarParaEdicao($event)"
+  ></app-transacao-lista>
 </div>
