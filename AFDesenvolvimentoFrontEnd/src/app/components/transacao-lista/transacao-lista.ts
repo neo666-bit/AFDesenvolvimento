@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { Transacao } from '../../models/transacao';
+import { TransacaoService } from '../../services/transacao';
 
 @Component({
   imports: [],
@@ -6,4 +8,33 @@ import { Component } from '@angular/core';
   styleUrl: './transacao-lista.css',
   templateUrl: './transacao-lista.html',
 })
-export class TransacaoLista {}
+export class TransacaoLista implements OnInit {
+  private service = inject(TransacaoService);
+
+  transacoes: Transacao[] = [];
+  filtro = '';
+
+  categorias = ['Alimentação', 'Salário', 'Lazer', 'Transporte', 'Outros'];
+
+  ngOnInit() {
+    this.carregar();
+  }
+
+  carregar() {
+    this.service.listar().subscribe(dados => {
+      this.transacoes = dados;
+    });
+  }
+
+  excluir(id: string) {
+    this.service.excluir(id).subscribe(() => {
+      this.carregar();
+    });
+  }
+
+  get listaFiltrada(): Transacao[] {
+    return this.filtro
+      ? this.transacoes.filter(t => t.categoria === this.filtro)
+      : this.transacoes;
+  }
+}
